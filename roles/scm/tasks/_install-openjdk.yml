@@ -1,0 +1,6 @@
+---
+
+- name: Install OpenJDK manually - CDH 5.16 support OpenJDK officially.
+  yum:
+    name: java-1.8.0-openjdk-devel
+    state: latest

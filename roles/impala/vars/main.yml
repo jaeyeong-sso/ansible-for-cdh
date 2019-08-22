@@ -1,0 +1,5 @@
+---
+
+SERVICE_NAME: impala
+SERVICE_USER: impala
+SERVICE_GROUP: impala

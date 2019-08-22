@@ -1,0 +1,5 @@
+---
+
+SERVICE_NAME: solr
+SERVICE_USER: solr
+SERVICE_GROUP: solr

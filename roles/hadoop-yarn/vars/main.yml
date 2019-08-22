@@ -1,0 +1,5 @@
+---
+
+SERVICE_NAME: hadoop-yarn
+SERVICE_USER: yarn
+SERVICE_GROUP: yarn

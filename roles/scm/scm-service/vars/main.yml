@@ -1,0 +1,8 @@
+---
+
+SCM_SERVICE_LIST:
+  - cloudera-host-monitor
+  - cloudera-scm-eventserver
+  - cloudera-service-monitor
+  - cloudera-scm-alertpublisher
+  - cloudera-scm-firehose

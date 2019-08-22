@@ -1,0 +1,49 @@
+---
+
+- debug:
+    msg : "Create new '/var/lib' path for {{SERVICE_NAME}}"
+
+- name : Check whether origin is exists or not.
+  stat:
+    path: "/var/lib/{{SERVICE_NAME}}"
+  register: stat_lib_path_exists
+
+- debug:
+    msg : "Check path result : {{stat_lib_path_exists.stat.exists}}"
+
+- name: Atomic execution(Create or Move).
+  block:
+    - name: If not exist, try to create new one.
+      file:
+        path: "{{SCM_LIB_HOME}}/{{SERVICE_NAME}}"
+        owner: "{{SERVICE_USER}}"
+        group: "{{SERVICE_GROUP}}"
+        mode: 0755
+        state: directory
+      when: stat_lib_path_exists.stat.exists == False
+    - name: If exist, try to copy from origin.
+      copy:
+        src: "/var/lib/{{SERVICE_NAME}}"
+        dest: "{{SCM_LIB_HOME}}"
+        owner: "{{SERVICE_USER}}"
+        group: "{{SERVICE_GROUP}}"
+        directory_mode: yes
+      when: stat_lib_path_exists.stat.exists == True
+    - name: If exist, change permission on dest path.
+      file:
+        path: "{{SCM_LIB_HOME}}/{{SERVICE_NAME}}"
+        state: directory
+        mode: 0755
+        recurse: yes
+      when: stat_lib_path_exists.stat.exists == True
+    - name : If exist, remove orgin.
+      file:
+        path: "/var/lib/{{SERVICE_NAME}}"
+        state: absent
+      when: stat_lib_path_exists.stat.exists == True
+
+- name : Create symbolic-link in origin.
+  file:
+    src: "{{SCM_LIB_HOME}}/{{SERVICE_NAME}}"
+    dest: /var/lib/{{SERVICE_NAME}}
+    state: link

@@ -1,0 +1,6 @@
+---
+
+- name: Cleanup data under '/data' dir path.
+  file:
+    path: "/data/"
+    state: absent

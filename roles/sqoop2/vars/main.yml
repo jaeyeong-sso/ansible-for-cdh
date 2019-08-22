@@ -1,0 +1,5 @@
+---
+
+SERVICE_NAME: sqoop2
+SERVICE_USER: sqoop2
+SERVICE_GROUP: sqoop2

@@ -1,0 +1,121 @@
+---
+
+- name : Create group "cloudera-scm"
+  group:
+    name: cloudera-scm
+    gid: 2000
+
+- name: Create user "cloudera-scm"
+  user:
+    name: cloudera-scm
+    uid: 1000
+    create_home: True
+    group: cloudera-scm
+
+
+- name : Create "/home/~/opt" directory
+  file:
+    path: "{{SCM_ROOT_HOME}}/opt"
+    owner: cloudera-scm
+    group: cloudera-scm
+    mode: 0755
+    state: directory
+
+- name : Create "/home/~/tmp" directory
+  file:
+    path: "{{SCM_ROOT_HOME}}/tmp"
+    owner: cloudera-scm
+    group: cloudera-scm
+    mode: 0777
+    state: directory
+
+- name : Create "/home/~/var" directory
+  file:
+    path: "{{SCM_ROOT_HOME}}/var"
+    owner: cloudera-scm
+    group: cloudera-scm
+    mode: 0755
+    state: directory
+
+- name : Create "/home/~/var/lib" directory
+  file:
+    path: "{{SCM_LIB_HOME}}"
+    owner: cloudera-scm
+    group: cloudera-scm
+    mode: 0755
+    state: directory
+
+- name : Create "/home/~/var/log" directory
+  file:
+    path: "{{SCM_LOG_HOME}}"
+    owner: cloudera-scm
+    group: cloudera-scm
+    mode: 0755
+    state: directory
+
+- name: Create symbolic-link on "/opt/cloudera-scm"
+  file:
+    src: "{{SCM_OPT_HOME}}"
+    dest: /opt/cloudera
+    state: link
+
+
+# /var/lib
+- name : Create "/home/~/var/lib/cloudera-scm-server" directory
+  file:
+    path: "{{SCM_ROOT_HOME}}/var/lib/cloudera-scm-server"
+    owner: cloudera-scm
+    group: cloudera-scm
+    mode: 0755
+    state: directory
+
+- name: Create symbolic-link on "/var/lib/cloudera-scm-server"
+  file:
+    src: "{{SCM_ROOT_HOME}}/var/lib/cloudera-scm-server"
+    dest: "/var/lib/cloudera-scm-server"
+    state: link
+
+
+- name : Create "/home/~/var/log/cloudera-scm-server" directory
+  file:
+    path: "{{SCM_ROOT_HOME}}/var/log/cloudera-scm-server"
+    owner: cloudera-scm
+    group: cloudera-scm
+    mode: 0755
+    state: directory
+
+- name: Create symbolic-link on "/var/log/cloudera-scm-server"
+  file:
+    src: "{{SCM_ROOT_HOME}}/var/log/cloudera-scm-server"
+    dest: "/var/log/cloudera-scm-server"
+    state: link
+
+# /var/log
+- name : Create "/home/~/var/lib/cloudera-scm-agent" directory
+  file:
+    path: "{{SCM_ROOT_HOME}}/var/lib/cloudera-scm-agent"
+    owner: cloudera-scm
+    group: cloudera-scm
+    mode: 0755
+    state: directory
+
+- name: Create symbolic-link on "/var/lib/cloudera-scm-agent"
+  file:
+    src: "{{SCM_ROOT_HOME}}/var/lib/cloudera-scm-agent"
+    dest: "/var/lib/cloudera-scm-agent"
+    state: link
+
+
+- name : Create "/home/~/var/log/cloudera-scm-agent" directory
+  file:
+    path: "{{SCM_ROOT_HOME}}/var/log/cloudera-scm-agent"
+    owner: cloudera-scm
+    group: cloudera-scm
+    mode: 0755
+    state: directory
+
+- name: Create symbolic-link on "/var/log/cloudera-scm-agent"
+  file:
+    src: "{{SCM_ROOT_HOME}}/var/log/cloudera-scm-agent"
+    dest: "/var/log/cloudera-scm-agent"
+    state: link

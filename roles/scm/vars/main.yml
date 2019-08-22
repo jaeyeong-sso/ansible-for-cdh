@@ -1,0 +1,69 @@
+---
+
+SERVICE_ACCOUNT:
+  - cloudera-scm
+  - kafka
+  - zookeeper
+  - flume
+  - hdfs
+  - solr
+  - llama
+  - httpfs
+  - mapred
+  - sqoop
+  - yarn
+  - kms
+  - hive
+  - sqoop2
+  - oozie
+  - hbase
+  - sentry
+  - impala
+  - spark
+  - hue
+  - kudu
+
+
+SERVICE_GROUP:
+  - cloudera-scm
+  - kafka
+  - zookeeper
+  - hadoop
+  - flume
+  - hdfs
+  - solr
+  - llama
+  - httpfs
+  - mapred
+  - sqoop
+  - yarn
+  - kms
+  - hive
+  - sqoop2
+  - oozie
+  - hbase
+  - sentry
+  - impala
+  - spark
+  - hue
+  - kudu
+
+SERVICE_LIST:
+  - flume-ng
+  - hadoop-hdfs
+  - hadoop-httpfs
+  - hadoop-kms
+  - hadoop-mapreduce
+  - hadoop-yarn
+  - hbase
+  - hive
+  - impala
+  - kudu
+  - llama
+  - oozie
+  - sentry
+  - solr
+  - spark
+  - sqoop
+  - sqoop2
+  - zookeeper

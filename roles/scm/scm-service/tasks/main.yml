@@ -1,0 +1,8 @@
+---
+
+- debug:
+    msg: "execute /scm/scm-service/tasks/main.yml"
+  tags: never #always
+
+- import_tasks: install-scm-service.yml
+  tags: install,never

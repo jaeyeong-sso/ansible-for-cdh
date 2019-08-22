@@ -1,0 +1,14 @@
+---
+  
+# Find & Delete symbolic link of services start-with 'cloudera'
+- name: Find 'cloudera' symbolic link
+  find:
+     path: "{{target_path}}"
+     file_type: link
+     contains: "cloudera"
+  register: links
+
+- file:
+     path: "{{item.path}}"
+     state: absent
+  with_items: "{{links.files}}"

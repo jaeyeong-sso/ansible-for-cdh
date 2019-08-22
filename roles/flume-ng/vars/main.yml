@@ -1,0 +1,5 @@
+---
+
+SERVICE_NAME: flume-ng
+SERVICE_USER: flume
+SERVICE_GROUP: flume

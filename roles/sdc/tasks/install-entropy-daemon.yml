@@ -1,0 +1,13 @@
+--- 
+
+- name: Install haveged Service for Entory Pool increase.
+  yum:
+    name: haveged
+    state: latest
+
+- name: Enable haveged Service
+  systemd: 
+    name: haveged
+    state: started
+    enabled: True
+  

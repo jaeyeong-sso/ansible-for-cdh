@@ -1,0 +1,5 @@
+---
+
+SERVICE_NAME: hadoop-hdfs
+SERVICE_USER: hdfs
+SERVICE_GROUP: hdfs

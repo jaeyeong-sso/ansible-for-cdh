@@ -1,0 +1,157 @@
+---
+
+- name: Remove cloudera-manager-* yum package. 
+  yum:
+    name: 'cloudera-manager-*'
+    state: absent
+
+- name: Cleanup cloudera-manager-* yum metadata.
+  yum_repository:
+    name: 'cloudera-manager-*'
+    state: absent
+  notify: yum-clean-metadata
+
+
+- name: Just force systemd to reread configs (2.4 and above)    # sudo systemctl daemon-reload
+  systemd:
+    daemon_reload: yes
+
+- name: Unmount cm_processes filesystem.
+  #command: umount cm_processes
+  mount:
+    path: /run/cloudera-scm-agent/process
+    state: unmounted
+   
+
+- name: Remove Cloudera Manager Data - (1).
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "/usr/share/cmf"
+    - "/etc/cloudera-scm-agent"
+    - "/etc/cloudera-scm-server"
+    - "/etc/yum.repos.d/cloudera-manager.repo"
+    - "/var/run/cloudera-scm-agent"
+
+- include : roles/scm/tasks/_remove-part-symbolic-link.yml
+  vars:
+     target_path: /var/log
+
+- include : roles/scm/tasks/_remove-part-symbolic-link.yml
+  vars:
+     target_path: /var/lib
+
+- include : roles/scm/tasks/_remove-part-symbolic-link.yml
+  vars:
+     target_path: /var/cache/yum
+
+- name : Rmove cloudera-manager lock file.
+  file:
+    path: /tmp/.scm_prepare_node.lock
+    state: absent
+    force: no
+
+
+- name: Remove User Data which are unlinked with '/home/cloudera/var/lib/~'
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "/var/lib/flume-ng"
+    - "/var/lib/hadoop-hdfs"
+    - "/var/lib/hadoop-httpfs"
+    - "/var/lib/hadoop-kms"
+    - "/var/lib/hadoop-mapreduce"
+    - "/var/lib/hue"
+    - "/var/lib/llama"
+    - "/var/lib/oozie"
+    - "/var/lib/solr"
+    - "/var/lib/sqoop"
+    - "/var/lib/sqoop2"
+    - "/var/lib/zookeeper"
+    - "/var/lib/sentry"
+    - "/var/lib/spark"
+    - "/var/lib/kudu"
+    - "/var/lib/hbase"
+    - "/var/lib/hive"
+    - "/var/lib/impala"
+    - "/var/lib/kafka"
+    - "/var/lib/cloudera-scm-server"
+    - "/var/lib/cloudera-scm-agent"
+    - "/var/lib/cloudera-host-monitor"
+    - "/var/lib/cloudera-scm-eventserver"
+    - "/var/lib/cloudera-service-monitor"
+    - "/var/lib/cloudera-scm-alertpublisher"
+    - "/var/lib/cloudera-scm-firehose"
+
+- name: Remove Log Data which are unlinked with '/home/cloudera/var/log/~'
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "/var/log/flume-ng"
+    - "/var/log/hadoop-hdfs"
+    - "/var/log/hadoop-httpfs"
+    - "/var/log/hadoop-kms"
+    - "/var/log/hadoop-mapreduce"
+    - "/var/log/hue"
+    - "/var/log/llama"
+    - "/var/log/oozie"
+    - "/var/log/solr"
+    - "/var/log/sqoop"
+    - "/var/log/sqoop2"
+    - "/var/log/zookeeper"
+    - "/var/log/sentry"
+    - "/var/log/spark"
+    - "/var/log/kudu"
+    - "/var/log/hbase"
+    - "/var/log/hive"
+    - "/var/log/impala"
+    - "/var/log/kafka"
+    - "/var/log/cloudera-scm-server"
+    - "/var/log/cloudera-scm-agent"
+    - "/var/log/cloudera-host-monitor"
+    - "/var/log/cloudera-scm-eventserver"
+    - "/var/log/cloudera-service-monitor"
+    - "/var/log/cloudera-scm-alertpublisher"
+    - "/var/log/cloudera-scm-firehose"
+
+- include : roles/scm/tasks/_remove-part-symbolic-link.yml
+  vars:
+     target_path: /opt
+
+# Cleanup '/home/cloudera/var/lib & /home/cloudera/var/log'
+- name : Remove data.
+  file:
+    path: "{{item}}"
+    state: absent
+  with_items:
+    - "{{SCM_LIB_HOME}}"
+    - "{{SCM_LOG_HOME}}"
+    - "{{SCM_OPT_HOME}}"
+
+
+# clenup OS Service Account & Group
+- include: roles/scm/tasks/_remove-service-user.yml
+  vars:
+    PARAM: "{{ item }}"
+  with_items: "{{ SERVICE_ACCOUNT }}"
+
+- include: roles/scm/tasks/_remove-service-group.yml
+  vars:
+    PARAM: "{{ item }}"
+  with_items: "{{ SERVICE_GROUP }}"
+
+
+#- name : Delete user "cloudera-scm"
+#  user:
+#    name: cloudera-scm
+#    state: absent
+#    remove: yes
+#    force: True
+
+#- name: Remove group "cloudera-scm"
+#  group:
+#    name: cloudera-scm
+#    state: absent

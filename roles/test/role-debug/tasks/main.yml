@@ -1,0 +1,6 @@
+---
+
+- name: "SHOULD BE FIXED : SERVICE_RIST >> SERVICE_LIST"
+  debug:
+     msg: "items >> {{ item }}"
+  with_items: "{{ SERVICE_RIST }}"

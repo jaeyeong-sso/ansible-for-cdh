@@ -1,0 +1,11 @@
+---
+
+- debug:
+    msg: "execute /scm/tasks/main.yml"
+  tags: never #always
+
+- import_tasks: clean-uninstall.yml
+  tags: uninstall,never
+
+- import_tasks: post-install.yml
+  tags: post-install,never

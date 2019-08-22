@@ -1,0 +1,29 @@
+---
+
+- include: "roles/scm/tasks/prepare-install.yml"
+
+
+- name: Download 'cloudera-manager.repo' file.
+  get_url:
+    url: "{{CDH_REPO_FILE_URL}}"
+    dest: /etc/yum.repos.d
+
+- name: Signing GPG key.
+  command: sudo rpm --import https://archive.cloudera.com/cm5/redhat/7/x86_64/cm/RPM-GPG-KEY-cloudera
+
+
+- name: Install cloudera-manager-server
+  yum:
+    name:
+    - cloudera-manager-daemons
+    - cloudera-manager-server
+    state: present
+  notify: "handler-edit-cloudera-scm-server-config"
+
+#####################################################################
+# Manual Configuration
+#####################################################################
+
+# /etc/default/cloudera-scm-server  :  export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk"
+#
+# /etc/cloudera-scm-server/db.properties

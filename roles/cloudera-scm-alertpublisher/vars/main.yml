@@ -1,0 +1,5 @@
+---
+
+SERVICE_NAME: cloudera-scm-alertpublisher
+SERVICE_USER: cloudera-scm
+SERVICE_GROUP: cloudera-scm

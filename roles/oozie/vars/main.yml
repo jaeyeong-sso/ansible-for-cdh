@@ -1,0 +1,5 @@
+---
+
+SERVICE_NAME: oozie
+SERVICE_USER: oozie
+SERVICE_GROUP: oozie

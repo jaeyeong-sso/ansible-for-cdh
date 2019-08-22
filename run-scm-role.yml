@@ -1,0 +1,31 @@
+---
+
+# scm-agent should be launch first before scm-server : 
+
+- hosts: scm-agent
+  remote_user: irteamsu
+  become: yes
+  become_method: sudo
+  roles:
+  - role: scm/scm-agent  
+
+- hosts: scm-server
+  remote_user: irteamsu
+  become: yes
+  become_method: sudo
+  roles:
+  - role: scm/scm-server
+
+- hosts: scm
+  remote_user: irteamsu
+  become: yes
+  become_method: sudo
+  roles:
+  - role: scm
+
+- hosts: scm-service
+  remote_user: irteamsu
+  become: yes
+  become_method: sudo
+  roles:
+  - role: scm/scm-service

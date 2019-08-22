@@ -1,0 +1,4 @@
+---
+
+- debug:
+    msg: "debug msg is >> {{ PARAM }}"

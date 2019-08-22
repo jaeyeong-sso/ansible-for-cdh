@@ -1,0 +1,10 @@
+---
+
+- hosts: test
+  remote_user: irteamsu
+  become: yes
+  become_method: sudo
+  roles:
+  - role: test/role-group-1
+  - role: test/role-group-2
+  - role: test/role-group-3

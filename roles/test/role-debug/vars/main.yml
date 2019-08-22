@@ -1,0 +1,6 @@
+---
+
+SERVICE_LIST:
+  - hadoop-hdfs
+  - hadoop-mapreduce
+  - hadoop-yarn

@@ -1,0 +1,5 @@
+---
+
+SERVICE_NAME: hadoop-kms
+SERVICE_USER: kms
+SERVICE_GROUP: kms

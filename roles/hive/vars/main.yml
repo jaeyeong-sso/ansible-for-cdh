@@ -1,0 +1,5 @@
+---
+
+SERVICE_NAME: hive
+SERVICE_USER: hive
+SERVICE_GROUP: hive

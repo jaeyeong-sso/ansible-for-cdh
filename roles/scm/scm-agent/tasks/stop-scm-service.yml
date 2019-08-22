@@ -1,0 +1,13 @@
+---
+
+- name: Check if Service Exists
+  stat: path=/etc/init.d/cloudera-scm-agent
+  register: service_status
+
+- name: Stop cloudera-scm-agent service gracefully(considering supervisord) - (1).
+  command: service cloudera-scm-agent next_stop_hard
+  when: service_status.stat.exists
+
+- name: Stop cloudera-scm-agent service gracefully(considering supervisord) - (2).
+  command: service cloudera-scm-agent stop
+  when: service_status.stat.exists

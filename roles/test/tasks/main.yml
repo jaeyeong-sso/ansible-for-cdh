@@ -1,0 +1,21 @@
+---
+
+
+- debug:
+    msg: "Execute test/tasks/main.yml.."
+
+#- include: roles/test/tasks/_debug_msg_with_item.yml
+#  vars:
+#    PARAM: "{{ item }}"
+#  with_items: "{{ SERVICE_ACCOUNT }}"
+
+
+#- command: echo "Do something After this."
+#  tags: install,never
+#  notify: "handler-edit-cloudera-scm-server-config"
+
+- debug:
+    msg: "task-1 executed.."
+
+- debug:
+    msg: "task-2 executed.."

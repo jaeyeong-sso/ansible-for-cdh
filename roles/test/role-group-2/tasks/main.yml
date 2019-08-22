@@ -1,0 +1,13 @@
+---
+
+
+#- name: "Print Debugg message"
+#  debug: var=inventory_hostname
+
+- name: "Print Gether IP Address"
+  debug: var=hostvars[inventory_hostname]['ansible_default_ipv4']['address']
+
+- name: "Deploy template/hosts.j2 as /home/irteamsu/hosts"
+  template:
+    src: hosts.j2
+    dest: /home/irteamsu/hosts

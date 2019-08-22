@@ -1,0 +1,5 @@
+---
+
+SERVICE_NAME: hbase
+SERVICE_USER: hbase
+SERVICE_GROUP: hbase

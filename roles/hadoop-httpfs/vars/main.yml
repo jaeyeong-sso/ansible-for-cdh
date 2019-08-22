@@ -1,0 +1,5 @@
+---
+
+SERVICE_NAME: hadoop-httpfs
+SERVICE_USER: httpfs
+SERVICE_GROUP: httpfs

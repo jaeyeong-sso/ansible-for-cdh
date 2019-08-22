@@ -1,0 +1,5 @@
+---
+
+SERVICE_NAME: zookeeper
+SERVICE_USER: zookeeper
+SERVICE_GROUP: zookeeper

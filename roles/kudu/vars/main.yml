@@ -1,0 +1,5 @@
+---
+
+SERVICE_NAME: kudu
+SERVICE_USER: kudu
+SERVICE_GROUP: kudu

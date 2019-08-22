@@ -1,0 +1,11 @@
+---
+
+- debug:
+    msg: "Execute scm-server role with service-name as {{SERVICE_NAME}}"
+  tags: always
+
+- import_tasks: stop-scm-service.yml
+  tags: uninstall,never
+
+- import_tasks: install-scm-server.yml 
+  tags: install,never

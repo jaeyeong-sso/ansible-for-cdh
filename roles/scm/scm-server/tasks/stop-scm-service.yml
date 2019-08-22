@@ -1,0 +1,9 @@
+---
+
+- name: Check if service exists
+  stat: path=/etc/init.d/cloudera-scm-server
+  register: service_status
+
+- name: Stop cloudera-scm-server service.
+  command: service cloudera-scm-server stop
+  when: service_status.stat.exists

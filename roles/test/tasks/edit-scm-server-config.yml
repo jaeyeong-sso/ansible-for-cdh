@@ -1,0 +1,47 @@
+---
+
+
+- debug:
+    msg: "Execute test/tasks/edit-scm-server-config.yml.."
+
+
+# Modify db.properties
+
+- lineinfile:
+    path: "{{SCM_SERVER_CONF_DIR}}/db.properties"
+    regexp: '^#com.cloudera.cmf.db.name=cmf'
+    state: present
+    backrefs: yes
+    line: 'com.cloudera.cmf.db.name={{SCM_DB_NAME}}'
+
+- lineinfile:
+    path: "{{SCM_SERVER_CONF_DIR}}/db.properties"
+    regexp: '^#com.cloudera.cmf.db.user=cmf'
+    state: present
+    backrefs: yes
+    line: 'com.cloudera.cmf.db.user={{SCM_DB_USER}}'
+
+- lineinfile:
+    path: "{{SCM_SERVER_CONF_DIR}}/db.properties"
+    regexp: '^#com.cloudera.cmf.db.password='
+    state: present
+    backrefs: yes
+    line: 'com.cloudera.cmf.db.password={{SCM_DB_PW}}'
+
+- lineinfile:
+    path: "{{SCM_SERVER_CONF_DIR}}/db.properties"
+    regexp: '^com.cloudera.cmf.db.setupType=INIT'
+    state: present
+    backrefs: yes
+    line: 'com.cloudera.cmf.db.setupType=EXTERNAL'
+
+
+# Modify /etc/default/cloudera-scm-server For JAVA_HOME
+- shell: cat "{{SCM_SERVER_ENV_DIR}}/cloudera-scm-server" | grep JAVA_HOME | wc -l
+  register: is_exist
+
+#- lineinfile:
+    dest: "{{SCM_SERVER_ENV_DIR}}/cloudera-scm-server"
+    line: 'export JAVA_HOME="{{JAVA_HOME}}"'
+  when: is_exist.stdout == "0"
+#  notify: Start cloudera-scm-server service

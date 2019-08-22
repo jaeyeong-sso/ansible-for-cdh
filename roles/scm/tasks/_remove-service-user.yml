@@ -1,0 +1,8 @@
+---
+  
+- name : Delete specific linux service account"
+  user:
+    name: "{{ PARAM }}"
+    state: absent
+    remove: yes
+    force: True

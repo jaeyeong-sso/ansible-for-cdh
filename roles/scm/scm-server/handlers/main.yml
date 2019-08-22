@@ -1,0 +1,5 @@
+---
+
+- name: handler-edit-cloudera-scm-server-config
+  include: roles/scm/scm-server/tasks/edit-scm-server-config.yml
+  listen: "handler-edit-cloudera-scm-server-config"

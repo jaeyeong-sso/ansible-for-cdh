@@ -1,0 +1,5 @@
+---
+
+SERVICE_NAME: hadoop-mapreduce
+SERVICE_USER: mapred
+SERVICE_GROUP: mapred

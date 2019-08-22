@@ -1,0 +1,7 @@
+SCM_ROOT_HOME: /home/cloudera-scm
+SCM_LIB_HOME: /home/cloudera-scm/var/lib
+SCM_LOG_HOME: /home/cloudera-scm/var/log
+SCM_OPT_HOME: /home/cloudera-scm/opt
+
+
+iface: '{{ ansible_default_ipv4.interface }}'

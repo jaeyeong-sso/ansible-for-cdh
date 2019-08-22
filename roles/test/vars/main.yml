@@ -1,0 +1,61 @@
+---
+
+SERVICE_ACCOUNT:
+  - cloudera-scm-server
+  - cloudera-scm-agent
+  - kafka
+  - zookeeper
+  - flume
+  - hfds
+  - solr
+  - llama
+  - httpfs
+  - mapred
+  - sqoop
+  - yarn
+  - kms
+  - hive
+  - sqoop2
+  - oozie
+  - hbase
+  - sentry
+  - impala
+  - spark
+  - hue
+  - kudu
+
+
+SERVICE_GROUP:
+  - kafka
+  - zookeeper
+  - hadoop
+  - flume
+  - hdfs
+  - solr
+  - llama
+  - httpfs
+  - mapred
+  - sqoop
+  - yarn
+  - kms
+  - hive
+  - sqoop2
+  - oozie
+  - hbase
+  - sentry
+  - impala
+  - spark
+  - hue
+  - kudu
+
+SCM_DB_NAME: scmtest
+SCM_DB_USER: scmtest
+SCM_DB_PW: scmtest!@#
+
+JAVA_HOME: /usr/lib/jvm/java-1.8.0-openjdk
+
+SCM_SERVER_CONF_DIR: /home1/irteamsu/git-repos/am/roles/test/resources
+SCM_SERVER_ENV_DIR: /home1/irteamsu/git-repos/am/roles/test/resources
+
+
+

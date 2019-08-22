@@ -1,0 +1,18 @@
+---
+
+
+- include_role: 
+    name: "{{ item }}"
+  with_items: "{{ SERVICE_LIST }}"
+
+
+#- include: "roles/scm/tasks/_symbolic-lib-path.yml"
+#  vars: 
+#    TARGET_SERVICE: "{{ item }}"
+#  with_items: "{{ SERVICE_DIR }}"
+
+
+#- include: "roles/scm/tasks/_symbolic-log-path.yml"
+#  vars:
+#    TARGET_SERVICE: "{{ item }}"
+#  with_items: "{{ SERVICE_DIR }}"

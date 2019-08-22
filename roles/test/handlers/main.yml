@@ -1,0 +1,6 @@
+--- 
+
+- name: "Edit cloudera-scm-server config..."
+  debug:
+    msg: "Handler invoked : Start cloudera-scm-server service !!!"
+  listen: "handler-edit-cloudera-scm-server-config"

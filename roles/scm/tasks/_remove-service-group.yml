@@ -1,0 +1,6 @@
+---
+  
+- name : Delete specific linux service group"
+  group:
+    name: "{{ PARAM }}"
+    state: absent
