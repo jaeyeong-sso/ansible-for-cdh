@@ -1,23 +1,23 @@
 [all]
-test-nacm[001:002].nfra.io
+test-nacm[001:002].domain
 
 [utility]
-test-nacm001.ncl.nfra.io
+test-nacm001.domain
 
 [master]
-test-nahd001.ncl.nfra.io
-test-nahd002.ncl.nfra.io
+test-nahd001.domain
+test-nahd002.domain
 
 [gateway]
-test-nacm002.ncl.nfra.io
+test-nacm002.domain
 
 [worker]
-test-nahd003.ncl.nfra.io
-test-nahd004.ncl.nfra.io
-test-nahd005.ncl.nfra.io
+test-nahd003.domain
+test-nahd004.domain
+test-nahd005.domain
 
 [scm-server]
-test-nacm001.ncl.nfra.io
+test-nacm001.domain
 
 [scm-agent:children]
 utility
@@ -31,18 +31,18 @@ scm-agent
 
 
 [scm-service]
-test-nacm001.ncl.nfra.io
+test-nacm001.domain
 
 
 
 [test-group-1]
-test-nahd001.ncl.nfra.io
+test-nahd001.domain
 
 [test-group-2]
-test-nahd002.ncl.nfra.io
+test-nahd002.domain
 
 [test-group-3]
-test-nahd003.ncl.nfra.io
+test-nahd003.domain
 
 [test:children]
 test-group-1

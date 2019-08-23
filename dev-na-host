@@ -1,11 +1,11 @@
 
 [scm-server]
-dev-nacm001.ncl.nfra.io
+dev-nacm001.domain
 
 [scm-agent:children]
-dev-nacm002.ncl.nfra.io
-dev-nahd[001-005].ncl.nfra.io
-dev-nahd[006-010]-ncl.nfra.io
+dev-nacm002.domain
+dev-nahd[001-005].domain
+dev-nahd[006-010].domain
 
 [scm:children]
 scm-server
