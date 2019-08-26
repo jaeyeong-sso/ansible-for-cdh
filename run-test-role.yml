@@ -1,14 +1,14 @@
 ---
 
 #- hosts: test
-#  remote_user: irteamsu
+#  remote_user: root
 #  become: yes
 #  become_method: sudo
 #  roles:
 #  - role: test/sub-task-1
 
 #- hosts: test
-#  remote_user: irteamsu
+#  remote_user: root
 #  become: yes
 #  become_method: sudo
 #  roles:
@@ -21,7 +21,7 @@
 # : After rerun might be ok.
 - hosts: test
   strategy: free
-  remote_user: irteamsu
+  remote_user: root
   become: yes
   become_method: sudo
   roles:

@@ -50,12 +50,12 @@ SERVICE_GROUP:
 
 SCM_DB_NAME: scmtest
 SCM_DB_USER: scmtest
-SCM_DB_PW: scmtest!@#
+SCM_DB_PW: scmtest
 
 JAVA_HOME: /usr/lib/jvm/java-1.8.0-openjdk
 
-SCM_SERVER_CONF_DIR: /home1/irteamsu/git-repos/am/roles/test/resources
-SCM_SERVER_ENV_DIR: /home1/irteamsu/git-repos/am/roles/test/resources
+SCM_SERVER_CONF_DIR: /home1/root/git-repos/am/roles/test/resources
+SCM_SERVER_ENV_DIR: /home1/root/git-repos/am/roles/test/resources
 
 
 

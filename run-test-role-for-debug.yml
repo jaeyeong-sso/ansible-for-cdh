@@ -1,14 +1,14 @@
 ---
 
 #- hosts: test
-#  remote_user: irteamsu
+#  remote_user: root
 #  become: yes
 #  become_method: sudo
 #  roles:
 #  - role: test/sub-task-1
 
 #- hosts: test
-#  remote_user: irteamsu
+#  remote_user: root
 #  become: yes
 #  become_method: sudo
 #  roles:
@@ -19,10 +19,10 @@
 # : When Playbook Debugger is kicked due to wrong argument name,
 # : Do this  >  task_vars['SERVICE_LIST_WRONG_ARG'] = task_vars['SERVICE_LIST']
 # : After rerun might be ok.
-- hosts: test-nacm001.ncl.nfra.io
+- hosts: test-host.domain
   strategy: debug
   # debugger: on_failed
-  remote_user: irteamsu
+  remote_user: root
   become: yes
   become_method: sudo
   roles:
